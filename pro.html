@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abdulrahman Mohamed | Full Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg-color: #f4f7f6;
+        --card-bg: #ffffff;
+        --text-main: #2c3e50;
+        --text-sub: #546e7a;
+        --accent-color: #3498db;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      [data-theme="dark"] {
+        --bg-color: #0a192f;
+        --card-bg: #112240;
+        --text-main: #ccd6f6;
+        --text-sub: #8892b0;
+        --accent-color: #64ffda;
+        --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        margin: 0;
+        transition: 0.4s;
+        line-height: 1.8;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg);
+        box-shadow: var(--shadow);
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 15px 0;
+        z-index: 999;
+        border-bottom: 2px solid var(--accent-color);
+      }
+
+      .navbar a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-weight: 600;
+        padding: 0 15px;
+        transition: 0.3s;
+      }
+
+      .navbar a:hover {
+        color: var(--accent-color);
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--accent-color);
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        cursor: pointer;
+        z-index: 1000;
+        font-weight: bold;
+        box-shadow: var(--shadow);
+      }
+
+      header {
+        padding-top: 100px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        border: 8px solid var(--accent-color);
+        margin-bottom: 30px;
+        object-fit: cover;
+        box-shadow: var(--shadow);
+      }
+
+      h2 {
+        font-size: 2.2rem;
+        border-bottom: 4px solid var(--accent-color);
+        display: inline-block;
+        padding-bottom: 10px;
+        margin-bottom: 40px;
+      }
+
+      section {
+        padding: 100px 20px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        padding: 35px;
+        border-radius: 25px;
+        transition: 0.3s;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        box-shadow: var(--shadow);
+      }
+
+      .card:hover {
+        transform: translateY(-15px);
+      }
+
+      .tech-stack span {
+        background: rgba(52, 152, 219, 0.15);
+        color: var(--accent-color);
+        padding: 6px 15px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        margin-right: 8px;
+        display: inline-block;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .soft-skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+      .soft-skill-box {
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        border-top: 5px solid var(--accent-color);
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .experience-card {
+        background: var(--card-bg);
+        padding: 25px;
+        border-radius: 20px;
+        border-left: 5px solid var(--accent-color);
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .cert-display {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .cert-display img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+        border: 2px solid var(--accent-color);
+        box-shadow: var(--shadow);
+      }
+
+      .contact-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        color: var(--text-main);
+        transition: 0.3s;
+      }
+      .contact-item:hover {
+        transform: scale(1.05);
+        background: var(--accent-color);
+        color: white;
+      }
+      .contact-item i {
+        font-size: 1.8rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 60px;
+        color: var(--text-sub);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      /* Zoom Images in Projects */
+      .zoom-img {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .zoom-img:active {
+        transform: scale(1.6);
+        z-index: 999;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Dark/Light Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
+      <i class="fas fa-moon"></i> Dark Mode
+    </button>
+
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <img src="image.jpeg" alt="Abdulrahman Mohamed" class="profile-img" />
+        <h1>Abdulrahman Mohamed Sayed</h1>
+        <p style="color: var(--accent-color); font-weight: 500">
+          Future AI Engineer | Machine Learning Specialist
+        </p>
+        <p style="max-width: 700px; color: var(--text-sub)">
+          Student at the Faculty of Computers and Artificial Intelligence,
+          Beni-Suef National University. Passionate about building intelligent
+          systems and solving real-world challenges with data.
+        </p>
+      </header>
+
+      <!-- About -->
+      <section id="about">
+        <h2>About Me</h2>
+        <div
+          style="
+            font-size: 1.15rem;
+            color: var(--text-main);
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+          "
+        >
+          <p>
+            I am a highly driven Computer Science student with a deep passion
+            for AI and Data Science. I aim to understand the "why" behind every
+            model and build efficient systems.
+          </p>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education">
+        <h2>Education</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Faculty of Computers & AI</h3>
+            <p>Beni-Suef National University – Third Year Student</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience & Certifications -->
+      <section id="experience">
+        <h2>Experience & Certifications</h2>
+        <div class="grid">
+          <div class="experience-card">
+            <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+            <p>
+              <strong>Professional Accountant</strong><br />
+              Arafa Plastic Factory<br />
+              Managed financial records and inventory data with high accuracy.
+            </p>
+          </div>
+          <div class="experience-card">
+            <h3><i class="fas fa-certificate"></i> Training</h3>
+            <p>
+              <strong>NTI Training Certification</strong><br />
+              National Telecommunication Institute (NTI)<br />
+              Completed specialized training enhancing technical skills in AI.
+            </p>
+          </div>
+        </div>
+        <div class="cert-display">
+          <h3>Featured Certificate</h3>
+          <img src="shahada.jpeg" alt="NTI Certificate" />
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <h2>Key Projects</h2>
+        <div class="grid">
+          <!-- Mobile Project -->
+          <a href="mobile_project.html" class="card">
+            <h3 style="color: var(--accent-color)">
+              📱 Mobile Price Predictor
+            </h3>
+            <p>
+              Predicts price categories of mobile phones for a startup using
+              Random Forest. Click to see final project and code images.
+            </p>
+            <div class="tech-stack"><span>ML</span> <span>Python</span></div>
+          </a>
+          <!-- XOXO Project -->
+          <a href="tictactoe_project.html" class="card">
+            <h3 style="color: var(--accent-color)">
+              🎮 Unbeatable Tic-Tac-Toe
+            </h3>
+            <p>
+              AI game using Minimax algorithm with ~50% smartness. Click to view
+              project.
+            </p>
+            <div class="tech-stack">
+              <span>Algorithms</span> <span>Game Theory</span>
+            </div>
+          </a>
+          <!-- Real Estate Project -->
+          <a href="realestate.html" class="card">
+            <h3 style="color: var(--accent-color)">
+              🏠 Real Estate Forecaster
+            </h3>
+            <p>
+              WIP project predicting house prices using regression (dummy
+              project).
+            </p>
+            <div class="tech-stack">
+              <span>Regression</span><span>Data Science</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills">
+        <h2>Technical & Soft Skills</h2>
+        <div class="grid">
+          <div class="card">
+            <h3><i class="fas fa-laptop-code"></i> Programming & Web</h3>
+            <div class="tech-stack">
+              <span>Python (Pro)</span> <span>C++</span> <span>SQL</span>
+              <span>HTML5</span> <span>CSS3</span> <span>Streamlit</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-brain"></i> AI & ML</h3>
+            <div class="tech-stack">
+              <span>Supervised Learning</span> <span>Data Preprocessing</span>
+              <span>Pandas</span> <span>NumPy</span> <span>Scikit-Learn</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-terminal"></i> Tools & Environment</h3>
+            <div class="tech-stack">
+              <span>Git & GitHub</span> <span>Jupyter Notebooks</span>
+              <span>VS Code</span> <span>Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 50px">Professional Attributes</h3>
+        <div class="soft-skills-container">
+          <div class="soft-skill-box">
+            <i class="fas fa-users-cog"></i><br />Teamwork
+          </div>
+          <div class="soft-skill-box">
+            <i class="fas fa-tachometer-alt"></i><br />Fast Learner
+          </div>
+          <div class="soft-skill-box">
+            <i class="fas fa-fire"></i><br />Under Pressure
+          </div>
+          <div class="soft-skill-box">
+            <i class="fas fa-lightbulb"></i><br />Problem Solving
+          </div>
+          <div class="soft-skill-box">
+            <i class="fas fa-hourglass-half"></i><br />Time Management
+          </div>
+          <div class="soft-skill-box">
+            <i class="fas fa-comments"></i><br />Communication
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" style="text-align: center">
+        <h2>Get In Touch</h2>
+        <p>Let's connect and build something amazing together!</p>
+        <div class="contact-list">
+          <a href="tel:01151101222" class="contact-item"
+            ><i class="fas fa-phone-alt"></i><span>01151101222</span></a
+          >
+          <a href="mailto:abdoowm02@gmail.com" class="contact-item"
+            ><i class="fas fa-envelope"></i><span>abdoowm02@gmail.com</span></a
+          >
+          <a
+            href="https://www.linkedin.com/in/abdulrahman-mohamed-aa2407351"
+            target="_blank"
+            class="contact-item"
+            ><i class="fab fa-linkedin"></i><span>LinkedIn Profile</span></a
+          >
+          <a
+            href="https://github.com/abdulrhman-mohamed10"
+            target="_blank"
+            class="contact-item"
+            ><i class="fab fa-github"></i><span>GitHub Profile</span></a
+          >
+        </div>
+      </section>
+
+      <footer>
+        Built by Abdulrahman Mohamed Sayed © 2026<br />
+        Beni-Suef National University - Faculty of Computers & AI
+      </footer>
+    </div>
+
+    <script>
+      function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById("themeBtn");
+        if (body.getAttribute("data-theme") === "dark") {
+          body.removeAttribute("data-theme");
+          btn.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        } else {
+          body.setAttribute("data-theme", "dark");
+          btn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        }
+      }
+    </script>
+  </body>
+</html>

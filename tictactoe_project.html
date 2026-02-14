@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unbeatable Tic-Tac-Toe | Abdulrahman Mohamed</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg-color: #f4f7f6;
+        --card-bg: #ffffff;
+        --text-main: #2c3e50;
+        --text-sub: #546e7a;
+        --accent-color: #3498db;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+      [data-theme="dark"] {
+        --bg-color: #0a192f;
+        --card-bg: #112240;
+        --text-main: #ccd6f6;
+        --text-sub: #8892b0;
+        --accent-color: #64ffda;
+        --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        margin: 0;
+        transition: 0.4s;
+        line-height: 1.8;
+      }
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+      }
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--accent-color);
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        cursor: pointer;
+        z-index: 1000;
+        font-weight: bold;
+        box-shadow: var(--shadow);
+      }
+      h1 {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+      p {
+        text-align: center;
+        max-width: 800px;
+        margin: auto;
+        font-size: 1.2rem;
+      }
+      img.project-img {
+        max-width: 90%;
+        height: auto;
+        border-radius: 15px;
+        border: 2px solid var(--accent-color);
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        margin-bottom: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .overlay img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 15px;
+      }
+      .back {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: var(--accent-color);
+      }
+      .back:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body data-theme="light">
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
+      <i class="fas fa-moon"></i> Dark Mode
+    </button>
+
+    <div class="container">
+      <h1>🎮 Unbeatable Tic-Tac-Toe</h1>
+      <p>
+        Strategic XO game using the Minimax algorithm. AI plays intelligently
+        (~50%), providing a challenging experience.
+      </p>
+
+      <img
+        src="tictactoe_final.jpeg"
+        alt="Tic-Tac-Toe Final"
+        class="project-img"
+        onclick="zoomImage(this)"
+        title="Click to zoom"
+      />
+
+      <p>Key Features:</p>
+      <ul>
+        <li>Implemented Minimax algorithm for AI moves</li>
+        <li>Smart AI plays ~50% intelligently</li>
+        <li>Interactive and responsive UI</li>
+      </ul>
+
+      <a href="index.html" class="back"
+        ><i class="fas fa-arrow-left"></i> Back to Portfolio</a
+      >
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeZoom()">
+      <img id="zoomedImg" src="" alt="Zoomed Image" />
+    </div>
+
+    <script>
+      const overlay = document.getElementById("overlay");
+      const zoomedImg = document.getElementById("zoomedImg");
+      function zoomImage(img) {
+        zoomedImg.src = img.src;
+        overlay.style.display = "flex";
+      }
+      function closeZoom() {
+        overlay.style.display = "none";
+        zoomedImg.src = "";
+      }
+      function toggleTheme() {
+        const body = document.body,
+          btn = document.getElementById("themeBtn");
+        if (body.getAttribute("data-theme") === "dark") {
+          body.setAttribute("data-theme", "light");
+          btn.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        } else {
+          body.setAttribute("data-theme", "dark");
+          btn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        }
+      }
+    </script>
+  </body>
+</html>
